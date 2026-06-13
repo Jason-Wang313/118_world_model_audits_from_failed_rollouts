@@ -2,21 +2,25 @@
 
         Paper: 118 World-Model Audits From Failed Rollouts
 
-        ## Strongest Prior-Work Threats
+        ## Strongest Technical Threats
         - WorldBench: Disambiguating Physics for Diagnostic Evaluation of World Models (2026)
 - LLM-Based Control for Simulated Physical Reasoning: Modular Evaluation in the NeurIPS Embodied Agent Interface Challenge (2026)
 - Fatigue life evaluation of root failure in welded joints based on displacement around the weld root (2025)
 - WorldGym: World Model as An Environment for Policy Evaluation (2025)
 - ManipArena: Comprehensive Real-world Evaluation of Reasoning-Oriented Generalist Robot Manipulation (2026)
 - Self-Supervised Learning for Generalizable AI: Bridging the Gap Between Pretraining and Real-World Deployment (2025)
+- From Large Language Models to Large Action Models: Reasoning and Planning with Physical World Knowledge (2025)
+- ACWM-Phys: Investigating Generalized Physical Interaction in Action-Conditioned Video World Models (2026)
 
-        ## Response
-        The paper no longer claims that generic world modeling, generic uncertainty, or larger datasets are novel. The defensible contribution is the combination of explicit unrealized physical branches, a tail-risk objective over those branches, diagnostic probing, and failure memory.
+        ## ICLR Main Response
+        A hostile ICLR reviewer would be correct to reject this as a main-conference submission. The v2 paper has reproducible synthetic evidence and careful limitations, but it does not contain the real robot, high-fidelity simulator, learned model, or manual related-work depth needed for the ICLR main track.
 
-        ## What Is Not Claimed
-        - No real-robot state of the art.
-        - No proof that the branch atlas can always discover the true hidden mode.
-        - No claim that advisor-name matches imply relevance.
+        ## Honest Action
+        The paper is marked `KILL_ARCHIVE`. This avoids converting a generated workshop-style idea into an overstated main-conference claim.
 
-        ## Remaining Reviewer Risk
-        A main-conference reviewer can still reject the work for synthetic-only evidence. The correct venue state is `WORKSHOP_ONLY` until hardware or high-fidelity simulation validation is added.
+        ## What Would Be Needed To Revive
+        - Real robot or high-fidelity benchmark experiments.
+        - Implemented model and baselines, not synthetic probability tables.
+        - Manual full-paper related-work audit.
+        - Paper-specific writing and figures.
+        - Evidence that the core mechanism is learned and useful under deployment shift.
