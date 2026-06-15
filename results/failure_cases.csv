@@ -3,3 +3,7 @@ irreversible_hardware_breakage,audit should abstain and request inspection,0.220
 instruction_goal_ambiguity,physical audit should not pretend to solve semantics,0.340000,requires a separate language grounding or clarification loop
 adversarial_sensor_dropout,audit becomes conservative under missing observations,0.410000,sensor-health modeling remains outside the mechanism audit
 novel_fluid_contact,taxonomy should flag out-of-distribution mechanism,0.290000,"taxonomy coverage, not planner search, is the limiting factor"
+two_mechanism_failure_aliasing,audit should keep multiple hypotheses active,0.460000,single-cause repair can be wrong when friction and actuator lag co-occur
+repair_memory_poisoning,discard stale repair memories after regime shift,0.390000,failed-rollout memory needs freshness and mechanism compatibility checks
+probe_budget_exhaustion,prioritize probes by expected mechanism information,0.440000,diagnostic probes remain a scarce resource under long-horizon failures
+oracle_gap_under_compound_hidden_mechanisms,approach oracle mechanism audit under maximum ambiguity,0.520000,local audit is useful but not saturated without better hidden-mechanism coverage

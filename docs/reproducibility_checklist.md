@@ -10,6 +10,7 @@
   - `results/pairwise_stats.csv`
   - `results/ablation_metrics.csv`
   - `results/stress_sweep.csv`
+  - `results/stress_sweep_seed_metrics.csv` with 10,080 detailed rows
   - `results/failure_cases.csv`
   - `results/summary.txt`
 - Main figures:
