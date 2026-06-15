@@ -6,6 +6,8 @@
 \usepackage{booktabs}
 \usepackage{graphicx}
 \usepackage{amsmath}
+\usepackage{microtype}
+\raggedbottom
 
 \title{World-Model Audits From Failed Rollouts}
 \author{Anonymous Authors}
@@ -14,7 +16,7 @@
 \maketitle
 
 \begin{abstract}
-Robot world models often fail silently: after a bad rollout, a planner may know the prediction was wrong without knowing which physical assumption was missing. We study failed rollouts as action-critical audits. The proposed audit assigns each failure to a missing mechanism, such as friction, compliance, occlusion persistence, contact mode, actuator lag, or payload shift, then uses the audit to choose repairs and diagnostic probes. We evaluate the idea in a local benchmark with 6 task families, 8 hidden physical regimes, 5 deployment splits, 9 controllers, 7 paired seeds, and 72 rollout episodes per group. Under combined stress, the proposed failed-rollout audit reaches $0.717 \pm 0.007$ success versus $0.609 \pm 0.006$ for the strongest non-oracle baseline, active probing. The paired gain is $0.109 \pm 0.010$ with wins on 7/7 seeds. The audit also improves mechanism localization F1 by $0.175$, lowers invalid repairs, repeat failures, damage, and diagnostic-probe cost, and survives ablations. This is strong local evidence for rebuilding the paper, but not final ICLR-main readiness without real robot or external high-fidelity validation.
+Robot world models often fail silently: after a bad rollout, a planner may know the prediction was wrong without knowing which physical assumption was missing. We study failed rollouts as action-critical audits. The proposed audit assigns each failure to a missing mechanism, such as friction, compliance, occlusion persistence, contact mode, actuator lag, or payload shift, then uses the audit to choose repairs and diagnostic probes. We evaluate the idea in a v4.1 local benchmark with 6 task families, 8 hidden physical regimes, 5 deployment splits, 9 controllers, 7 paired seeds, 72 rollout episodes per group, 10,080 task/regime/seed stress rows, and 8 documented failure cases. Under combined stress, the proposed failed-rollout audit reaches $0.717 \pm 0.007$ success versus $0.609 \pm 0.006$ for the strongest non-oracle baseline, active probing. The paired gain is $0.109 \pm 0.010$ with wins on 7/7 seeds. The audit also improves mechanism localization F1 by $0.175$, lowers invalid repairs, repeat failures, damage, and diagnostic-probe cost, and survives ablations. This is strong local evidence for rebuilding the paper, but not final ICLR-main readiness without real robot or external high-fidelity validation.
 \end{abstract}
 
 \section{Motivation}
@@ -41,9 +43,11 @@ The benchmark covers drawer contact repair, deformable bin picking, occluded pus
 
 Baselines include observed-only planning, data-augmented world models, scalar uncertainty planning, ensemble disagreement, conformal risk filtering, failure-classifier repair, active probing, the proposed failed-rollout audit, and an oracle mechanism audit. Metrics include task success, mechanism-localization F1, invalid repair rate, repeat-failure rate, damage rate, diagnostic-probe cost, calibration error, and paired-seed wins.
 
+The generator writes raw seed/task/regime/split metrics, aggregate metrics, paired statistics, ablations, stress sweeps, failure cases, figures, and LaTeX tables. The v4.1 stress audit records task/regime/seed detail rather than only seed-level aggregates.
+
 \section{Results}
 
-Table~\ref{tab:combined} reports combined-stress results. The strongest non-oracle baseline is \texttt{active\_probe\_planner}. The proposed audit improves success by $0.109 \pm 0.010$, mechanism F1 by $0.175$, and reduces invalid repairs by $0.079$, repeat failures by $0.083$, damage by $0.022$, and probe cost by $0.077$.
+Table~\ref{tab:combined} reports combined-stress results. The strongest non-oracle baseline is active probing. The proposed audit improves success by $0.109 \pm 0.010$, mechanism F1 by $0.175$, and reduces invalid repairs by $0.079$, repeat failures by $0.083$, damage by $0.022$, and probe cost by $0.077$.
 
 \begin{table}[t]
 \centering
@@ -82,7 +86,7 @@ Table~\ref{tab:ablation} shows that the mechanism taxonomy, failed-rollout trace
 \end{table}
 
 \paragraph{Stress sweep.}
-Figure~\ref{fig:stress} increases hidden-mechanism ambiguity and observation sparsity. The proposed audit degrades more gracefully than scalar uncertainty, conformal risk filtering, and active probing, while remaining below the oracle mechanism audit.
+Figure~\ref{fig:stress} increases hidden-mechanism ambiguity and observation sparsity over 10,080 task/regime/seed rows. The proposed audit degrades more gracefully than scalar uncertainty, conformal risk filtering, and active probing, while remaining below the oracle mechanism audit. At maximum stress, the proposed audit reaches $0.660 \pm 0.005$ success versus $0.538 \pm 0.008$ for active probing and $0.784 \pm 0.003$ for the oracle.
 
 \begin{figure}[t]
 \centering
@@ -90,6 +94,10 @@ Figure~\ref{fig:stress} increases hidden-mechanism ambiguity and observation spa
 \caption{Stress sweep over ambiguity and observation sparsity.}
 \label{fig:stress}
 \end{figure}
+
+\section{Failure Cases}
+
+The failure-case audit records eight boundaries: irreversible hardware breakage, instruction-goal ambiguity, adversarial sensor dropout, novel fluid contact, two-mechanism failure aliasing, repair-memory poisoning, probe-budget exhaustion, and remaining oracle headroom under compound hidden mechanisms. These cases require real robot experiments, external high-fidelity validation, trained checkpoint release, and independent baseline implementations before this can be treated as submission-ready.
 
 \section{Related Work Boundary}
 
@@ -99,7 +107,10 @@ World-model diagnostics, world-model-as-environment evaluation, action-condition
 
 The evidence is local and generated by the released benchmark. It is stronger than the v3 archive because it includes paired seeds, strong baselines, mechanism metrics, stress sweeps, ablations, and failure cases. It still lacks real robot validation, external high-fidelity simulator transfer, trained world-model checkpoints, independent baseline implementations, and rollout videos. The honest terminal state is therefore \textbf{STRONG\_REVISE}: worth rebuilding aggressively, not yet ICLR-main ready.
 
+\begingroup
+\raggedright
 \bibliographystyle{iclr2026_conference}
 \bibliography{references}
+\endgroup
 
 \end{document}

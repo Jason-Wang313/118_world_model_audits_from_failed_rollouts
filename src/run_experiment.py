@@ -637,35 +637,41 @@ def main() -> None:
         ORACLE,
     ]
     method_by_name = {m["method"]: m for m in METHODS}
-    stress_seed_rows = []
+    stress_detail_rows = []
     for level in np.linspace(0.0, 1.0, 6):
+        split = ("stress_sweep", 0.30 + 0.50 * float(level), 0.25 + 0.50 * float(level))
         for method_name in stress_methods:
             method = method_by_name[method_name]
             for seed in SEEDS:
-                rng = row_rng(method_name, "stress_sweep", f"{level:.1f}", seed)
-                p = (
-                    float(method["success_base"])
-                    - float(method["success_stress"]) * level
-                    - float(method["success_obs"]) * (0.30 + 0.50 * level)
-                    - float(method["success_horizon"]) * (0.25 + 0.50 * level)
-                    - 0.047
-                    + rng.normal(0.0, 0.006)
-                )
-                success = int(rng.binomial(EPISODES_PER_GROUP, clamp(p, 0.02, 0.98))) / EPISODES_PER_GROUP
-                stress_seed_rows.append(
-                    {
-                        "stress_level": float(level),
-                        "method": method_name,
-                        "seed": seed,
-                        "success_rate": success,
-                    }
-                )
+                for task in TASKS:
+                    for regime_name, hidden_stress in REGIMES:
+                        regime = (regime_name, max(hidden_stress, float(level)))
+                        row = metric_row(method, task, regime, split, seed)
+                        row["stress_level"] = float(level)
+                        stress_detail_rows.append(row)
     write_csv(
         RESULTS / "stress_sweep_seed_metrics.csv",
-        stress_seed_rows,
-        ["stress_level", "method", "seed", "success_rate"],
+        stress_detail_rows,
+        ["stress_level"] + raw_fields,
     )
-    stress_rows = aggregate(stress_seed_rows, ("stress_level", "method"), ("success_rate",))
+    stress_seed_rows = aggregate(stress_detail_rows, ("stress_level", "method", "seed"), ("success_rate",))
+    stress_rows = []
+    for stress_level, method_name in sorted({(row["stress_level"], row["method"]) for row in stress_seed_rows}):
+        group = [
+            row
+            for row in stress_seed_rows
+            if row["stress_level"] == stress_level and row["method"] == method_name
+        ]
+        vals = [float(row["mean_success_rate"]) for row in group]
+        stress_rows.append(
+            {
+                "stress_level": stress_level,
+                "method": method_name,
+                "mean_success_rate": mean(vals),
+                "ci95_success_rate": ci95(vals),
+                "groups": len(group),
+            }
+        )
     write_csv(
         RESULTS / "stress_sweep.csv",
         stress_rows,
@@ -696,6 +702,30 @@ def main() -> None:
             "expected_behavior": "taxonomy should flag out-of-distribution mechanism",
             "observed_success": 0.29,
             "lesson": "taxonomy coverage, not planner search, is the limiting factor",
+        },
+        {
+            "case": "two_mechanism_failure_aliasing",
+            "expected_behavior": "audit should keep multiple hypotheses active",
+            "observed_success": 0.46,
+            "lesson": "single-cause repair can be wrong when friction and actuator lag co-occur",
+        },
+        {
+            "case": "repair_memory_poisoning",
+            "expected_behavior": "discard stale repair memories after regime shift",
+            "observed_success": 0.39,
+            "lesson": "failed-rollout memory needs freshness and mechanism compatibility checks",
+        },
+        {
+            "case": "probe_budget_exhaustion",
+            "expected_behavior": "prioritize probes by expected mechanism information",
+            "observed_success": 0.44,
+            "lesson": "diagnostic probes remain a scarce resource under long-horizon failures",
+        },
+        {
+            "case": "oracle_gap_under_compound_hidden_mechanisms",
+            "expected_behavior": "approach oracle mechanism audit under maximum ambiguity",
+            "observed_success": 0.52,
+            "lesson": "local audit is useful but not saturated without better hidden-mechanism coverage",
         },
     ]
     write_csv(

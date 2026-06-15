@@ -4,7 +4,7 @@ Paper: 118 world_model_audits_from_failed_rollouts
 
 Previous v3 decision: KILL_ARCHIVE
 
-V4 gate verdict: STRONG_REVISE
+v4.1 gate verdict: STRONG_REVISE
 
 Evidence digest:
 
@@ -17,6 +17,9 @@ Evidence digest:
 - Damage-rate delta: `-0.022`.
 - Diagnostic-probe cost delta: `-0.077`.
 - Best ablation gap: `0.054`.
+- Expanded stress coverage: `10,080` task/regime/seed rows.
+- Failure-case coverage: `8` rows.
+- Numeric integrity: no NaN or infinite values.
 
 Gate result: all local gates pass.
 

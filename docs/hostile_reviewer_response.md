@@ -14,4 +14,4 @@ Response: The `minus_mechanism_taxonomy` ablation drops from `0.719 +/- 0.006` t
 
 ## Attack: The benchmark is still not enough for ICLR main.
 
-Response: Agreed. The terminal decision is `STRONG_REVISE`, not final acceptance readiness. The work still needs real robot or external high-fidelity validation.
+Response: Agreed. The terminal decision is `STRONG_REVISE`, not final acceptance readiness. The v4.1 evidence has 10,080 detailed stress rows and 8 failure cases, but the work still needs real robot or external high-fidelity validation.

@@ -10,7 +10,9 @@ Why strong-revise:
 - 7/7 paired seed wins.
 - Mechanism-F1, invalid-repair, repeat-failure, damage, and probe-cost gates all pass.
 - Best ablation trails the full method by `0.054`.
-- Stress sweep and failure cases are included.
+- Stress sweep expands to `10,080` task/regime/seed rows.
+- Failure cases expand to `8` documented boundaries.
+- Numeric integrity passes with no NaN or infinite values.
 
 Why not ready:
 
