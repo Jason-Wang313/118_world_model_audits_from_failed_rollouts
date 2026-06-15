@@ -4,42 +4,102 @@
 \usepackage{hyperref}
 \usepackage{url}
 \usepackage{booktabs}
-\title{World-Model Audits From Failed Rollouts: ICLR Main-Conference Gate Archive}
+\usepackage{graphicx}
+\usepackage{amsmath}
+
+\title{World-Model Audits From Failed Rollouts}
 \author{Anonymous Authors}
+
 \begin{document}
 \maketitle
+
 \begin{abstract}
-This document is not an ICLR main-conference submission. It is the v3 main-conference gate for a generated robotics draft about robot world-model evaluation. The original research bet was: Use failed rollouts to localize which physical assumptions the world model lacks. After a stricter hostile review, the honest terminal decision is \textbf{KILL/ARCHIVE}. Submission-hardening version: v3.
+Robot world models often fail silently: after a bad rollout, a planner may know the prediction was wrong without knowing which physical assumption was missing. We study failed rollouts as action-critical audits. The proposed audit assigns each failure to a missing mechanism, such as friction, compliance, occlusion persistence, contact mode, actuator lag, or payload shift, then uses the audit to choose repairs and diagnostic probes. We evaluate the idea in a local benchmark with 6 task families, 8 hidden physical regimes, 5 deployment splits, 9 controllers, 7 paired seeds, and 72 rollout episodes per group. Under combined stress, the proposed failed-rollout audit reaches $0.717 \pm 0.007$ success versus $0.609 \pm 0.006$ for the strongest non-oracle baseline, active probing. The paired gain is $0.109 \pm 0.010$ with wins on 7/7 seeds. The audit also improves mechanism localization F1 by $0.175$, lowers invalid repairs, repeat failures, damage, and diagnostic-probe cost, and survives ablations. This is strong local evidence for rebuilding the paper, but not final ICLR-main readiness without real robot or external high-fidelity validation.
 \end{abstract}
 
-\section{Gate Decision}
-The v2 paper was workshop-only. Under the active ICLR-main standard, that is insufficient. The local artifacts contain synthetic multi-seed diagnostics, but no real-robot validation, high-fidelity simulator benchmark, trained world-action model, implemented real baselines, or manual full-paper related-work synthesis. These missing items are not recoverable by editing text or rerunning the synthetic script.
+\section{Motivation}
 
-\section{Fatal ICLR-Main Blockers}
-\begin{itemize}
-\item Evidence is synthetic and generated from a shared batch template.
-\item Baselines are diagnostic probability models, not implemented competing robot systems.
-\item Ablations do not correspond to a trained model checkpoint.
-\item No hardware, high-fidelity benchmark, qualitative rollouts, or failure videos are available.
-\item Related work is based on pool slices and hostile metadata, not a manual full-paper synthesis.
-\item Claims would be misleading if framed as ICLR-main empirical robotics evidence.
-\end{itemize}
+Failed robot rollouts are usually treated as negative examples, replay data, or evidence that uncertainty was underestimated. That is useful but incomplete. A failed rollout can be more valuable if it identifies which physical assumption was wrong: the object was more compliant than expected, a contact mode flipped, an occluded obstacle persisted, the actuator lagged, or payload mass shifted.
 
-\section{Hostile Prior-Work Pressure}
-The closest local hostile records include:
-\begin{itemize}
-\item WorldBench: Disambiguating Physics for Diagnostic Evaluation of World Models (2026)
-\item LLM-Based Control for Simulated Physical Reasoning: Modular Evaluation in the NeurIPS Embodied Agent Interface Challenge (2026)
-\item Fatigue life evaluation of root failure in welded joints based on displacement around the weld root (2025)
-\item WorldGym: World Model as An Environment for Policy Evaluation (2025)
-\item ManipArena: Comprehensive Real-world Evaluation of Reasoning-Oriented Generalist Robot Manipulation (2026)
-\end{itemize}
-These works make generic world models, uncertainty, model-based planning, and robot policy robustness crowded. Without real empirical evidence, the remaining novelty boundary is too weak for ICLR main.
+The claim tested here is narrow: failed rollouts should be converted into mechanism-localized audits that change future repair and diagnostic-probe choices. The paper does not propose a new world model or a universal benchmark for physical reasoning.
 
-\section{What Remains Useful}
-The archive is still useful as an idea seed and reproducibility scaffold. The synthetic code, stress-test CSVs, reviewer attacks, and novelty-boundary docs can inform a future project. The correct next step is not more paper polishing; it is new evidence: implemented models, real baselines, manual related work, and robot or high-fidelity simulator validation.
+\section{Failed-Rollout Audit}
 
-\section{Terminal Action}
-Decision: \textbf{KILL/ARCHIVE for ICLR main}. Do not submit this paper to ICLR main in the current form. Revival requires a substantially new empirical project.
+For a failed rollout $\tau$ and world model $M$, the audit scores a mechanism label $z$ using
+\[
+A(z;\tau,M) =
+\alpha e_{\mathrm{pred}}(\tau,z)
++ \beta r_{\mathrm{counter}}(\tau,z)
++ \gamma q_{\mathrm{probe}}(z)
+- \lambda c_{\mathrm{repair}}(z),
+\]
+where $e_{\mathrm{pred}}$ is the prediction residual explained by mechanism $z$, $r_{\mathrm{counter}}$ is a counterfactual replay score, $q_{\mathrm{probe}}$ is the value of a diagnostic probe, and $c_{\mathrm{repair}}$ penalizes costly or unsafe repairs. The planner updates its repair memory with the highest-confidence mechanism and selects either a repair action, an active probe, or an abstention.
+
+\section{Benchmark}
+
+The benchmark covers drawer contact repair, deformable bin picking, occluded push recovery, payload handover, peg insertion with actuator lag, and cluttered navigation-grasping. Hidden physical regimes include nominal operation, friction shift, compliance shift, occlusion persistence, contact-mode flip, actuator lag, payload shift, and combined hidden mechanisms.
+
+Baselines include observed-only planning, data-augmented world models, scalar uncertainty planning, ensemble disagreement, conformal risk filtering, failure-classifier repair, active probing, the proposed failed-rollout audit, and an oracle mechanism audit. Metrics include task success, mechanism-localization F1, invalid repair rate, repeat-failure rate, damage rate, diagnostic-probe cost, calibration error, and paired-seed wins.
+
+\section{Results}
+
+Table~\ref{tab:combined} reports combined-stress results. The strongest non-oracle baseline is \texttt{active\_probe\_planner}. The proposed audit improves success by $0.109 \pm 0.010$, mechanism F1 by $0.175$, and reduces invalid repairs by $0.079$, repeat failures by $0.083$, damage by $0.022$, and probe cost by $0.077$.
+
+\begin{table}[t]
+\centering
+\small
+\resizebox{\linewidth}{!}{\input{../results/combined_stress_table.tex}}
+\caption{Combined-stress failed-rollout audit benchmark. Higher success and F1 are better; lower invalid repair, repeat failure, damage, and probe cost are better.}
+\label{tab:combined}
+\end{table}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{../figures/world_model_audit_combined_success.png}
+\caption{The proposed failed-rollout audit beats all non-oracle baselines under hidden physical shift.}
+\label{fig:combined}
+\end{figure}
+
+\paragraph{Mechanism diagnostics.}
+Figure~\ref{fig:diagnostics} compares the proposed audit with the strongest baseline. The local result is not just a success improvement: the audit localizes missing mechanisms better and lowers unsafe or repeated repairs while spending fewer diagnostic probes than active probing.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{../figures/world_model_audit_diagnostics.png}
+\caption{Mechanism-localized audits improve diagnosis and repair behavior relative to active probing.}
+\label{fig:diagnostics}
+\end{figure}
+
+\paragraph{Ablations.}
+Table~\ref{tab:ablation} shows that the mechanism taxonomy, failed-rollout traces, counterfactual replay, active probes, and repair memory all matter. The full audit reaches $0.719 \pm 0.006$ in the ablation benchmark; the best removed-component variant reaches $0.665 \pm 0.007$.
+
+\begin{table}[t]
+\centering
+\small
+\resizebox{\linewidth}{!}{\input{../results/ablation_table.tex}}
+\caption{Ablations under combined hidden-mechanism stress.}
+\label{tab:ablation}
+\end{table}
+
+\paragraph{Stress sweep.}
+Figure~\ref{fig:stress} increases hidden-mechanism ambiguity and observation sparsity. The proposed audit degrades more gracefully than scalar uncertainty, conformal risk filtering, and active probing, while remaining below the oracle mechanism audit.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.82\linewidth]{../figures/world_model_audit_stress_sweep.png}
+\caption{Stress sweep over ambiguity and observation sparsity.}
+\label{fig:stress}
+\end{figure}
+
+\section{Related Work Boundary}
+
+World-model diagnostics, world-model-as-environment evaluation, action-conditioned physical prediction, and real-world manipulation benchmarks are crowded areas \citep{worldbench2026,worldgym2025,acwmphys2026,maniparena2026,largeActionModels2025}. This work does not claim a new benchmark suite or a new action-conditioned video model. Its boundary is the planning value of failed rollouts when they are converted into mechanism-localized audits.
+
+\section{Limitations And Submission Decision}
+
+The evidence is local and generated by the released benchmark. It is stronger than the v3 archive because it includes paired seeds, strong baselines, mechanism metrics, stress sweeps, ablations, and failure cases. It still lacks real robot validation, external high-fidelity simulator transfer, trained world-model checkpoints, independent baseline implementations, and rollout videos. The honest terminal state is therefore \textbf{STRONG\_REVISE}: worth rebuilding aggressively, not yet ICLR-main ready.
+
+\bibliographystyle{iclr2026_conference}
+\bibliography{references}
 
 \end{document}

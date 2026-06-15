@@ -1,13 +1,18 @@
 # Novelty Boundary Map
 
-## Crowded Territory
-- Bigger data/model scaling.
-- New benchmark only.
-- Generic active learning or uncertainty.
-- Combining a planner with a learned policy without a new state/action object.
+## What This Paper Can Claim
 
-## Claimed Boundary
-World model audits from failed rollouts keeps action-critical alternatives explicit until a physical observation collapses them.
+- Failed rollouts can be reused as mechanism-localized audits of missing world-model assumptions.
+- Mechanism-localized audits can improve repair and diagnostic-probe selection under hidden physical shift.
+- The local benchmark supports this claim against active probing, conformal risk filtering, ensemble disagreement, scalar uncertainty, data augmentation, and failure-classifier repair.
 
-## What Would Falsify The Claim
-If observed-only baselines match the adverse-mode coverage and closed-loop success of the proposed branch-aware mechanism, the paper should be revised or killed.
+## What This Paper Cannot Claim
+
+- Real-world robot deployment readiness.
+- State-of-the-art world-model evaluation.
+- General physical reasoning ability.
+- Full coverage of all possible failure mechanisms.
+
+## Boundary Sentence
+
+This work studies the planning value of localizing failed rollouts to missing physical mechanisms; it does not propose a new world model or a universal robotics benchmark.
