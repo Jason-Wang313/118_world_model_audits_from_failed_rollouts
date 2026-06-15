@@ -1,6 +1,8 @@
-ablation,combined_stress_mean_success,ci95_success,interpretation
-full_proposed_branch_mechanism,0.6657,0.0085,all components
-minus_branch_atlas,0.5812,0.0131,removes explicit unrealized futures
-minus_tail_risk_objective,0.5902,0.0166,uses mean predicted value only
-minus_diagnostic_probe,0.5929,0.0201,does not actively test ambiguous physical modes
-minus_failure_memory,0.6062,0.0185,does not reuse repaired beliefs
+ablation,interpretation,mean_mean_success_rate,ci95_mean_success_rate,groups
+full_failed_rollout_audit,all components,0.719122,0.006152,7
+minus_active_probes,does not probe ambiguous modes,0.665344,0.006569,7
+minus_repair_memory,does not reuse repaired beliefs,0.656705,0.003946,7
+minus_counterfactual_replay,removes counterfactual replay,0.655258,0.007155,7
+minus_failure_traces,removes failed-rollout traces,0.639964,0.006480,7
+minus_mechanism_taxonomy,collapses mechanism labels,0.619420,0.004881,7
+risk_only_audit,keeps only scalar risk,0.576224,0.005025,7

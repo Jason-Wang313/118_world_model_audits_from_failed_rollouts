@@ -1,0 +1,5 @@
+case,expected_behavior,observed_success,lesson
+irreversible_hardware_breakage,audit should abstain and request inspection,0.220000,failed-rollout audits cannot repair missing actuation authority
+instruction_goal_ambiguity,physical audit should not pretend to solve semantics,0.340000,requires a separate language grounding or clarification loop
+adversarial_sensor_dropout,audit becomes conservative under missing observations,0.410000,sensor-health modeling remains outside the mechanism audit
+novel_fluid_contact,taxonomy should flag out-of-distribution mechanism,0.290000,"taxonomy coverage, not planner search, is the limiting factor"

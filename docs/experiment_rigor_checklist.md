@@ -1,19 +1,15 @@
 # Experiment Rigor Checklist
 
-## v2 Synthetic Rigor
-- [x] Multiple seeds.
-- [x] Error bars.
-- [x] Stronger synthetic baselines.
-- [x] Ablations.
-- [x] Stress tests.
-- [x] Negative cases.
+- [x] Paper-specific benchmark replacing the shared v3 template.
+- [x] 6 task families, 8 hidden physical regimes, 5 deployment splits.
+- [x] 9 controllers/auditors including strong non-oracle baselines and an oracle upper bound.
+- [x] 7 paired seeds with 72 rollout episodes per group.
+- [x] Strongest-baseline comparison selected by combined-stress success.
+- [x] Paired-seed statistics reported for all baselines.
+- [x] Mechanism metrics beyond success: mechanism F1, invalid repair, repeat failure, damage, probe cost, calibration error.
+- [x] Ablations for failure traces, mechanism taxonomy, counterfactual replay, active probes, repair memory, and risk-only audit.
+- [x] Stress sweep over hidden-mechanism ambiguity and observation sparsity.
+- [x] Failure cases documented.
+- [x] Terminal gates computed in `results/summary.txt`.
 
-## ICLR Main Bar
-- [ ] Real-robot validation.
-- [ ] High-fidelity simulator benchmark.
-- [ ] Implemented learned model.
-- [ ] Implemented real competing baselines.
-- [ ] Manual related-work synthesis.
-- [ ] Paper-specific qualitative figures.
-
-Decision: fail ICLR main empirical-rigor gate; archive.
+Residual risk: all evidence remains local and synthetic/deterministic. Real robot or external high-fidelity validation is still required before an ICLR-main submission claim.

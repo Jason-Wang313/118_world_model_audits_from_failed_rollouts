@@ -1,0 +1,9 @@
+baseline,mean_success_diff,ci95_success_diff,paired_seed_wins,decisive
+observed_only_planner,0.389385,0.007058,7,yes
+data_augmented_world_model,0.301422,0.008583,7,yes
+scalar_uncertainty_planner,0.228671,0.006041,7,yes
+ensemble_disagreement_planner,0.191303,0.005463,7,yes
+conformal_risk_filter,0.176257,0.004392,7,yes
+failure_classifier_repair,0.151951,0.008268,7,yes
+active_probe_planner,0.108548,0.009846,7,yes
+oracle_mechanism_audit,-0.107846,0.004964,0,no

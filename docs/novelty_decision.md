@@ -1,7 +1,7 @@
 # Novelty Decision
 
-Chosen thesis: World-Model Audits From Failed Rollouts turns the seed bet into a mechanism: Use failed rollouts to localize which physical assumptions the world model lacks.
+Decision: STRONG_REVISE
 
-New central mechanism: World model audits from failed rollouts keeps action-critical alternatives explicit until a physical observation collapses them.
+The v4 benchmark creates a defensible novelty boundary around mechanism-localized failed-rollout audits. The decisive point is not raw success alone; it is the combination of success gain, mechanism-F1 gain, invalid-repair reduction, repeat-failure reduction, damage reduction, lower probe cost, and ablation support.
 
-Decision: proceed as a revise/workshop-strength ICLR-style draft with synthetic but runnable evidence.
+The idea remains risky for ICLR main without external validation, but it is no longer an archive-only scaffold.

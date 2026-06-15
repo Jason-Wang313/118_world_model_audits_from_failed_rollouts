@@ -1,0 +1,50 @@
+ablation,seed,interpretation,mean_success_rate,ci95_success_rate,groups
+full_failed_rollout_audit,0,all components,0.727720,0.018461,48
+full_failed_rollout_audit,1,all components,0.711227,0.017440,48
+full_failed_rollout_audit,2,all components,0.716725,0.017398,48
+full_failed_rollout_audit,3,all components,0.708333,0.021027,48
+full_failed_rollout_audit,4,all components,0.727141,0.018756,48
+full_failed_rollout_audit,5,all components,0.714988,0.019738,48
+full_failed_rollout_audit,6,all components,0.727720,0.017341,48
+minus_active_probes,0,does not probe ambiguous modes,0.658565,0.019229,48
+minus_active_probes,1,does not probe ambiguous modes,0.676505,0.019128,48
+minus_active_probes,2,does not probe ambiguous modes,0.678530,0.016392,48
+minus_active_probes,3,does not probe ambiguous modes,0.666667,0.017553,48
+minus_active_probes,4,does not probe ambiguous modes,0.661169,0.016286,48
+minus_active_probes,5,does not probe ambiguous modes,0.657986,0.020322,48
+minus_active_probes,6,does not probe ambiguous modes,0.657986,0.016384,48
+minus_counterfactual_replay,0,removes counterfactual replay,0.661169,0.022134,48
+minus_counterfactual_replay,1,removes counterfactual replay,0.657118,0.016475,48
+minus_counterfactual_replay,2,removes counterfactual replay,0.644097,0.020208,48
+minus_counterfactual_replay,3,removes counterfactual replay,0.668981,0.017390,48
+minus_counterfactual_replay,4,removes counterfactual replay,0.652778,0.019804,48
+minus_counterfactual_replay,5,removes counterfactual replay,0.642072,0.021586,48
+minus_counterfactual_replay,6,removes counterfactual replay,0.660590,0.015377,48
+minus_failure_traces,0,removes failed-rollout traces,0.635995,0.019754,48
+minus_failure_traces,1,removes failed-rollout traces,0.643229,0.016869,48
+minus_failure_traces,2,removes failed-rollout traces,0.650174,0.014582,48
+minus_failure_traces,3,removes failed-rollout traces,0.625289,0.020092,48
+minus_failure_traces,4,removes failed-rollout traces,0.638889,0.019754,48
+minus_failure_traces,5,removes failed-rollout traces,0.649884,0.020149,48
+minus_failure_traces,6,removes failed-rollout traces,0.636285,0.016781,48
+minus_mechanism_taxonomy,0,collapses mechanism labels,0.624421,0.015141,48
+minus_mechanism_taxonomy,1,collapses mechanism labels,0.615162,0.020149,48
+minus_mechanism_taxonomy,2,collapses mechanism labels,0.623553,0.021402,48
+minus_mechanism_taxonomy,3,collapses mechanism labels,0.614294,0.018874,48
+minus_mechanism_taxonomy,4,collapses mechanism labels,0.608796,0.020446,48
+minus_mechanism_taxonomy,5,collapses mechanism labels,0.625868,0.018004,48
+minus_mechanism_taxonomy,6,collapses mechanism labels,0.623843,0.020309,48
+minus_repair_memory,0,does not reuse repaired beliefs,0.662037,0.018841,48
+minus_repair_memory,1,does not reuse repaired beliefs,0.653935,0.015608,48
+minus_repair_memory,2,does not reuse repaired beliefs,0.647569,0.016101,48
+minus_repair_memory,3,does not reuse repaired beliefs,0.659144,0.018464,48
+minus_repair_memory,4,does not reuse repaired beliefs,0.662905,0.018443,48
+minus_repair_memory,5,does not reuse repaired beliefs,0.654225,0.015701,48
+minus_repair_memory,6,does not reuse repaired beliefs,0.657118,0.018450,48
+risk_only_audit,0,keeps only scalar risk,0.584201,0.022159,48
+risk_only_audit,1,keeps only scalar risk,0.568576,0.018508,48
+risk_only_audit,2,keeps only scalar risk,0.570602,0.019668,48
+risk_only_audit,3,keeps only scalar risk,0.581308,0.022049,48
+risk_only_audit,4,keeps only scalar risk,0.576100,0.019754,48
+risk_only_audit,5,keeps only scalar risk,0.583333,0.019334,48
+risk_only_audit,6,keeps only scalar risk,0.569444,0.018465,48
