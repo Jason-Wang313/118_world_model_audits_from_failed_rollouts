@@ -1,27 +1,19 @@
 # Final Audit
 
-Submission-hardening version: v4.1
+Paper: 118 `world_model_audits_from_failed_rollouts`
 
-Decision: STRONG_REVISE
+Expanded-standard version: v5
 
-The v4.1 rebuild clears the local evidence gate. The proposed failed-rollout audit beats the strongest non-oracle baseline, `active_probe_planner`, by `0.109 +/- 0.010` success under combined stress with 7/7 paired seed wins. It also improves mechanism localization and reduces invalid repairs, repeat failures, damage, and diagnostic-probe cost.
+Terminal decision: STRONG_REVISE
 
-Continuation audit additions:
+ICLR main ready: no
 
-- Stress sweep coverage: `10,080` task/regime/seed rows and `30` aggregate rows.
-- Failure cases: `8` documented failed-rollout audit boundaries.
-- Numeric integrity: no NaN or infinite values found across result CSVs.
-- Canonical PDF: `C:/Users/wangz/Downloads/118.pdf`.
-- PDF SHA256: `E177208F2B36F64421AF5E87C3BA090BBD56F63D2F5A111807E9049657240761`.
-- PDF size: `305247` bytes.
-- Desktop PDF copy: absent.
+The v5 package passes the local expanded-standard audit: deterministic runner, generated evidence, 28-page PDF, bright boxed clickable citations, clean BibTeX, Downloads-only numbered artifact, visual page QA, and validator checks.
 
-The paper is not ICLR-main ready yet. Missing items remain:
+Final PDF: `C:/Users/wangz/Downloads/118.pdf`
 
-- real robot validation;
-- external high-fidelity simulator validation;
-- independent implementation of all major baselines;
-- videos or qualitative rollouts;
-- full manual related-work synthesis beyond the hostile-pool slice.
+SHA256: `2AC788263369C553819D52E8E6715D108901635A944E4783E39044A506C58C11`
 
-Recommended action: keep as a serious submission rebuild candidate, not as a camera-ready main-conference paper.
+Reason for STRONG_REVISE: `counterfactual_mechanism_audit_v5` beats `proposed_failed_rollout_audit_v4_1` on hard success, utility, mechanism F1, invalid repair, repeat failure, damage, probe cost, calibration, budget violation, paired hard utility seeds, ablation, stress endpoint, and fixed-budget metrics.
+
+Reason it is not ICLR-main ready: no real robot rollouts, accepted high-fidelity validation, released checkpoint, calibrated logs, rollout videos, independent baseline implementations, or complete manual related-work synthesis exist.

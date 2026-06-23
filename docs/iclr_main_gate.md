@@ -1,26 +1,36 @@
 # ICLR Main Gate
 
-Paper: 118 world_model_audits_from_failed_rollouts
+Paper: 118 `world_model_audits_from_failed_rollouts`
 
-Previous v3 decision: KILL_ARCHIVE
+v5 gate verdict: STRONG_REVISE
 
-v4.1 gate verdict: STRONG_REVISE
+ICLR main ready: no
 
-Evidence digest:
+## Local Evidence Digest
 
-- Proposed success: `0.717 +/- 0.007`.
-- Strongest non-oracle baseline: `active_probe_planner` at `0.609 +/- 0.006`.
-- Paired difference: `0.109 +/- 0.010`, wins `7/7`.
-- Mechanism-F1 delta: `+0.175`.
-- Invalid-repair delta: `-0.079`.
-- Repeat-failure delta: `-0.083`.
-- Damage-rate delta: `-0.022`.
-- Diagnostic-probe cost delta: `-0.077`.
-- Best ablation gap: `0.054`.
-- Expanded stress coverage: `10,080` task/regime/seed rows.
-- Failure-case coverage: `8` rows.
-- Numeric integrity: no NaN or infinite values.
+- Proposed method: `counterfactual_mechanism_audit_v5`
+- Strongest non-oracle baseline: `proposed_failed_rollout_audit_v4_1`
+- Hard success: `0.80583` proposed vs `0.70615` baseline
+- Hard utility: `0.68463` proposed vs `0.42095` baseline
+- Mechanism-F1 delta: `+0.08835`
+- Invalid-repair delta: `-0.04046`
+- Repeat-failure delta: `-0.03822`
+- Damage-rate delta: `-0.01269`
+- Diagnostic-probe cost delta: `-0.03908`
+- Calibration-error delta: `-0.01950`
+- Budget-violation delta: `-0.05457`
+- Paired hard utility wins: `10/10`
+- Ablation success margin: `0.02135`
+- Ablation utility margin: `0.04107`
+- Max-stress success margin: `0.14401`
+- Strict fixed-budget coverage: `0.62552`
+- Strict fixed-budget breach: `0.00000`
+- Failure cases: `24`
 
-Gate result: all local gates pass.
+## Gate Result
 
-ICLR main ready: no. External validation and real robot or accepted high-fidelity simulator evidence are still missing.
+All frozen local empirical gates pass.
+
+## Scope Failure
+
+The paper is not ICLR-main ready. It still lacks real robot rollouts, accepted high-fidelity robot world-model simulation, released world-model or policy checkpoints, calibrated contact-force/camera/state logs, hardware rollout videos, independent baseline implementations, and complete manual related-work synthesis.

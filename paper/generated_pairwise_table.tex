@@ -1,0 +1,17 @@
+\begin{tabular}{llllll}
+\toprule
+baseline & succ. diff & utility diff & F1 diff & utility wins & decisive \\
+\midrule
+observed\_only\_planner & 0.563 $\pm$ 0.012 & 1.510 $\pm$ 0.012 & 0.596 & 10/10 & yes \\
+data\_augmented\_world\_model & 0.465 $\pm$ 0.012 & 1.242 $\pm$ 0.012 & 0.493 & 10/10 & yes \\
+scalar\_uncertainty\_planner & 0.388 $\pm$ 0.009 & 1.030 $\pm$ 0.009 & 0.421 & 10/10 & yes \\
+ensemble\_disagreement\_planner & 0.337 $\pm$ 0.015 & 0.910 $\pm$ 0.015 & 0.360 & 10/10 & yes \\
+conformal\_risk\_filter & 0.319 $\pm$ 0.014 & 0.826 $\pm$ 0.014 & 0.344 & 10/10 & yes \\
+failure\_classifier\_repair & 0.257 $\pm$ 0.011 & 0.719 $\pm$ 0.011 & 0.271 & 10/10 & yes \\
+active\_probe\_planner & 0.198 $\pm$ 0.016 & 0.577 $\pm$ 0.016 & 0.186 & 10/10 & yes \\
+causal\_query\_repair & 0.169 $\pm$ 0.013 & 0.481 $\pm$ 0.013 & 0.153 & 10/10 & yes \\
+pets\_latent\_mpc & 0.209 $\pm$ 0.015 & 0.580 $\pm$ 0.015 & 0.214 & 10/10 & yes \\
+proposed\_failed\_rollout\_audit\_v4\_1 & 0.100 $\pm$ 0.011 & 0.264 $\pm$ 0.011 & 0.088 & 10/10 & yes \\
+oracle\_mechanism\_repair & -0.124 $\pm$ 0.012 & -0.339 $\pm$ 0.013 & -0.122 & 0/10 & no \\
+\bottomrule
+\end{tabular}

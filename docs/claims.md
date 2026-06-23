@@ -1,8 +1,9 @@
 # Claims
 
-- Mechanism claim: failed rollouts are useful when they localize which physical assumption the world model missed, not merely when they raise scalar uncertainty.
-- Evidence claim: the v4 benchmark tests mechanism-localized audits across hidden friction, compliance, occlusion persistence, contact-mode, actuator-lag, payload-shift, and combined hidden-mechanism regimes.
-- Result claim: under combined stress, the proposed audit reaches `0.717 +/- 0.007` success versus `0.609 +/- 0.006` for `active_probe_planner`, with `0.109 +/- 0.010` paired success gain and 7/7 seed wins.
-- Mechanism-diagnostic claim: the proposed audit improves mechanism F1 by `0.175`, lowers invalid repairs by `0.079`, lowers repeat failures by `0.083`, lowers damage by `0.022`, and lowers probe cost by `0.077`.
+- Mechanism claim: failed rollouts are useful when they localize which physical mechanism the world model missed, not merely when they raise scalar uncertainty.
+- Method claim: `counterfactual_mechanism_audit_v5` uses a typed mechanism posterior, failed-rollout likelihood, counterfactual replay, diagnostic-probe value, repair-risk penalty, calibrated abstention, probe-budget control, and repair-memory freshness.
+- Evidence claim: the v5 local suite contains `230,400` main rollout cells, `38,400` ablation cells, `161,280` stress cells, `107,520` fixed-budget cells, and `24` failure cases.
+- Result claim: on the hard slice, v5 reaches `0.80583` success and `0.68463` utility versus `0.70615` success and `0.42095` utility for `proposed_failed_rollout_audit_v4_1`.
+- Diagnostic claim: v5 improves mechanism F1 by `+0.08835`, invalid repair by `-0.04046`, repeat failure by `-0.03822`, damage by `-0.01269`, probe cost by `-0.03908`, calibration error by `-0.01950`, and budget violation by `-0.05457`.
 - Scope claim: the evidence supports `STRONG_REVISE`, not final ICLR-main readiness.
-- Unsupported claim explicitly avoided: no claim of state-of-the-art robot world-model performance on real robots or external simulators.
+- Unsupported claim explicitly avoided: no state-of-the-art real robot world-model performance or external simulator transfer claim is made.

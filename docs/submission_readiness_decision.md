@@ -1,23 +1,18 @@
 # Submission Readiness Decision
 
-Terminal decision: STRONG_REVISE
+Decision: STRONG_REVISE
 
 ICLR main ready: no
 
-Why strong-revise:
+The v5 local package is materially stronger than the v4.1 scaffold: it has a 28-page manuscript, formal problem setup, method derivation, real references, stronger baselines, previous-method baseline retention, hard-slice pairwise tests, ablations, stress sweeps, fixed-budget audit, failure cases, visual PDF QA, and a validator.
 
-- `0.109 +/- 0.010` success gain over the strongest non-oracle baseline.
-- 7/7 paired seed wins.
-- Mechanism-F1, invalid-repair, repeat-failure, damage, and probe-cost gates all pass.
-- Best ablation trails the full method by `0.054`.
-- Stress sweep expands to `10,080` task/regime/seed rows.
-- Failure cases expand to `8` documented boundaries.
-- Numeric integrity passes with no NaN or infinite values.
+Do not submit as ICLR-main ready until the external scope gate is satisfied.
 
-Why not ready:
+Required external evidence:
 
-- no real robot validation;
-- no external high-fidelity simulator validation;
-- no released trained world-model checkpoint;
-- no independent baseline implementations;
-- no qualitative rollout videos.
+- Real robot rollouts or accepted high-fidelity robot world-model simulation
+- Released world-model or policy checkpoints
+- Calibrated contact-force, camera, and state logs
+- Hardware rollout videos
+- Independent baseline implementations
+- Full manual related-work synthesis

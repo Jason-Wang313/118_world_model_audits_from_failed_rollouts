@@ -1,14 +1,16 @@
 # Hostile Prior Work
 
-The hostile set contains world-model, physical reasoning, diagnostic evaluation, and robot-manipulation benchmark threats. The strongest local threats include:
+The strongest local threats are not template citations; they are real lines of work:
 
-- WorldBench: Disambiguating Physics for Diagnostic Evaluation of World Models (2026)
-- WorldGym: World Model as An Environment for Policy Evaluation (2025)
-- ACWM-Phys: Investigating Generalized Physical Interaction in Action-Conditioned Video World Models (2026)
-- ManipArena: Comprehensive Real-world Evaluation of Reasoning-Oriented Generalist Robot Manipulation (2026)
-- From Large Language Models to Large Action Models: Reasoning and Planning with Physical World Knowledge (2025)
-- SuctionNet-1Billion: A Large-Scale Benchmark for Suction Grasping (2021)
+- World models and latent-dynamics planning.
+- Probabilistic dynamics models and PETS-style MPC.
+- Dreamer/PlaNet-style latent imagination.
+- TD-MPC and other modern model-predictive RL methods.
+- Meta-World, RLBench, robomimic, ManiSkill, RT-1, Open X-Embodiment, and DROID.
+- Conformal uncertainty and risk filtering.
+- Causal confusion in imitation learning.
+- Domain randomization and sim-to-real transfer.
 
-Novelty boundary: the paper is not "another world-model benchmark" and not "uncertainty plus more data." The defensible contribution is converting failed rollouts into mechanism-localized audits that change repair/probe choices under hidden physical shift.
+Novelty boundary: v5 is not a benchmark or foundation model. Its defensible claim is that failed rollouts can be converted into mechanism-localized audits that change repair/probe/abstention decisions under hidden physical shift.
 
-Remaining hostile-review weakness: the evidence is local. A reviewer can still demand external benchmark transfer or real robot validation before accepting a main-conference claim.
+Remaining hostile-review weakness: evidence is local. External validation is still required before ICLR-main readiness.

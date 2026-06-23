@@ -1,0 +1,16 @@
+\begin{tabular}{llll}
+\toprule
+ablation & success & utility & interpretation \\
+\midrule
+full\_counterfactual\_mechanism\_audit & 0.807 $\pm$ 0.010 & 0.676 $\pm$ 0.010 & all v5 components \\
+minus\_active\_probe\_value & 0.786 $\pm$ 0.012 & 0.635 $\pm$ 0.012 & does not value diagnostic probes \\
+minus\_counterfactual\_replay & 0.773 $\pm$ 0.015 & 0.627 $\pm$ 0.015 & removes counterfactual replay \\
+minus\_failed\_rollout\_traces & 0.790 $\pm$ 0.016 & 0.625 $\pm$ 0.016 & removes failed-rollout evidence \\
+minus\_repair\_memory & 0.770 $\pm$ 0.013 & 0.620 $\pm$ 0.013 & forgets repaired mechanisms \\
+minus\_freshness\_guard & 0.786 $\pm$ 0.013 & 0.617 $\pm$ 0.012 & permits stale repair memory \\
+minus\_budget\_controller & 0.797 $\pm$ 0.009 & 0.596 $\pm$ 0.009 & removes probe-budget controller \\
+minus\_calibration\_gate & 0.769 $\pm$ 0.013 & 0.589 $\pm$ 0.013 & removes calibrated abstention and lets ambiguous repairs proceed \\
+minus\_mechanism\_taxonomy & 0.744 $\pm$ 0.012 & 0.585 $\pm$ 0.012 & collapses mechanism labels \\
+scalar\_risk\_only\_audit & 0.694 $\pm$ 0.015 & 0.454 $\pm$ 0.015 & keeps scalar risk only \\
+\bottomrule
+\end{tabular}

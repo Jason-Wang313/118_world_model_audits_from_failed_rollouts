@@ -1,33 +1,69 @@
-Paper 118 failed-rollout world-model audit local evidence rebuild
-Design: 6 task families x 8 hidden physical regimes x 5 deployment splits x 9 controllers, 7 seeds, 72 rollout episodes per group.
+Paper 118 failed-rollout world-model audit v5 expanded evidence rebuild
 Terminal decision: STRONG_REVISE
-Strongest non-oracle baseline under combined stress: active_probe_planner
-Proposed combined-stress success: 0.717 +/- 0.007
-Strongest baseline combined-stress success: 0.609 +/- 0.006
-Pairwise proposed-minus-strongest success diff: 0.109 +/- 0.010; wins=7/7
-Mechanism-F1 delta: 0.175
-Invalid-repair delta: -0.079
-Repeat-failure delta: -0.083
-Damage-rate delta: -0.022
-Diagnostic-probe cost delta: -0.077
-Ablation margin over best removed component (minus_active_probes): 0.054
+Strongest non-oracle baseline: proposed_failed_rollout_audit_v4_1
+hard_success_proposed: 0.8058333333333333
+hard_success_strongest: 0.7061458333333334
+hard_success_oracle: 0.9296875
+hard_utility_proposed: 0.6846292384982061
+hard_utility_strongest: 0.420946894283284
+hard_utility_oracle: 1.0237153036614104
+hard_success_margin: 0.09968749999999993
+hard_utility_margin: 0.2636823442149221
+mechanism_f1_delta: 0.08834742698762277
+invalid_repair_delta: -0.04045863935567717
+repeat_failure_delta: -0.03822218167678958
+damage_rate_delta: -0.012693531167966461
+diagnostic_probe_cost_delta: -0.03908175375419076
+calibration_error_delta: -0.01949737531429179
+budget_violation_delta: -0.0545727272408916
+abstention_delta: 0.017931964162489697
+paired_hard_success_delta: 0.09968750000000001
+paired_hard_success_wins: 10
+paired_hard_utility_delta: 0.26368234421492287
+paired_hard_utility_wins: 10
+ablation_success_margin: 0.021354166666666674
+ablation_utility_margin: 0.04106635347232801
+stress_endpoint_success_margin: 0.1440104166666667
+stress_endpoint_utility_margin: 0.3211084951368176
+strict_fixed_budget: 0.1
+strict_fixed_budget_coverage: 0.6255208333333334
+strict_fixed_budget_breach: 0.0
+strict_fixed_budget_gated_success: 0.7891199480797174
+strict_fixed_budget_utility_margin: 1.6284997258648235
 Gate results:
-- success_margin_ge_0.030: True
-- mechanism_f1_delta_ge_0.040: True
-- invalid_repair_delta_le_-0.020: True
-- repeat_failure_delta_le_-0.020: True
-- damage_delta_le_-0.010: True
+- ablation_success_margin_ge_0.015: True
+- ablation_utility_margin_ge_0.030: True
+- budget_violation_delta_le_-0.020: True
+- calibration_error_delta_le_-0.010: True
+- damage_rate_delta_le_-0.005: True
 - diagnostic_probe_cost_delta_le_0: True
-- paired_seed_wins_ge_5: True
-- ablation_margin_ge_0.020: True
-
-Combined-stress ranking:
-- oracle_mechanism_audit: success=0.825 +/- 0.006; F1=0.836; invalid=0.072; repeat=0.068; damage=0.038; probe=0.204
-- proposed_failed_rollout_audit: success=0.717 +/- 0.007; F1=0.704; invalid=0.136; repeat=0.125; damage=0.062; probe=0.242
-- active_probe_planner: success=0.609 +/- 0.006; F1=0.529; invalid=0.215; repeat=0.208; damage=0.083; probe=0.319
-- failure_classifier_repair: success=0.565 +/- 0.005; F1=0.451; invalid=0.241; repeat=0.238; damage=0.087; probe=0.242
-- conformal_risk_filter: success=0.541 +/- 0.006; F1=0.416; invalid=0.245; repeat=0.251; damage=0.090; probe=0.215
-- ensemble_disagreement_planner: success=0.526 +/- 0.007; F1=0.392; invalid=0.265; repeat=0.259; damage=0.098; probe=0.185
-- scalar_uncertainty_planner: success=0.489 +/- 0.005; F1=0.341; invalid=0.290; repeat=0.282; damage=0.103; probe=0.150
-- data_augmented_world_model: success=0.416 +/- 0.003; F1=0.278; invalid=0.340; repeat=0.322; damage=0.119; probe=0.099
-- observed_only_planner: success=0.328 +/- 0.005; F1=0.185; invalid=0.396; repeat=0.375; damage=0.137; probe=0.070
+- failure_cases_ge_24: True
+- hard_success_margin_ge_0.030: True
+- hard_utility_margin_ge_0.050: True
+- invalid_repair_delta_le_-0.020: True
+- mechanism_f1_delta_ge_0.040: True
+- paired_hard_utility_wins_ge_8: True
+- repeat_failure_delta_le_-0.020: True
+- stress_endpoint_success_margin_ge_0.030: True
+- strict_fixed_budget_breach_le_0.020: True
+- strict_fixed_budget_coverage_ge_0.550: True
+Row counts:
+- ablation_cell: 38400
+- ablation_metric: 10
+- ablation_seed: 100
+- dataset_summary: 240
+- failure_cases: 24
+- fixed_budget_cell: 107520
+- fixed_budget_metric: 28
+- fixed_budget_pairwise: 24
+- fixed_budget_seed: 280
+- hard_metric: 12
+- hard_pairwise: 11
+- hard_seed: 120
+- main_cell: 230400
+- main_group: 2880
+- metric: 12
+- seed_metric: 600
+- stress_cell: 161280
+- stress_metric: 42
+- stress_seed: 420

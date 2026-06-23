@@ -1,23 +1,18 @@
 # Submission Version Log
 
-## v3
+## v5 expanded - 2026-06-23
 
-- Archive decision: KILL_ARCHIVE.
-- Reason: synthetic/template evidence and no implemented strong empirical package.
+- Added bulletproof execution plan before edits.
+- Rebuilt experiment as `counterfactual_mechanism_audit_v5`.
+- Added previous method as `proposed_failed_rollout_audit_v4_1` and retained oracle upper bound.
+- Added 230,400 main cells, 38,400 ablation cells, 161,280 stress cells, 107,520 fixed-budget cells, and 24 failure cases.
+- Added generated tables, figures, `summary.json`, manuscript generator, and validator.
+- Generated 28-page ICLR-style PDF with bright boxed clickable citations.
+- Canonical PDF: `C:/Users/wangz/Downloads/118.pdf`
+- SHA256: `2AC788263369C553819D52E8E6715D108901635A944E4783E39044A506C58C11`
+- Terminal decision: STRONG_REVISE
+- ICLR main ready: no
 
-## v4
+## v4.1 - 2026-06-15
 
-- Rebuilt as a paper-specific failed-rollout world-model audit benchmark.
-- Added 6 task families, 8 hidden physical regimes, 5 deployment splits, 9 controllers, 7 paired seeds, and 72 rollout episodes per group.
-- Added mechanism metrics, paired comparisons, ablations, stress sweep, failure cases, figures, and manuscript-ready tables.
-- Terminal decision changed to STRONG_REVISE.
-- ICLR main readiness remains no pending external validation.
-
-## v4.1
-
-- Reran the experiment under low-RAM thread caps.
-- Expanded `stress_sweep_seed_metrics.csv` to 10,080 task/regime/seed rows.
-- Expanded `failure_cases.csv` to 8 documented failed-rollout audit boundaries.
-- Rechecked row counts, numeric integrity, manuscript consistency, and artifact placement.
-- Terminal decision remains STRONG_REVISE.
-- ICLR main readiness remains no pending real robot or independent high-fidelity validation.
+- Local continuation audit improved the archive scaffold, but the PDF was only 4 pages and lacked expanded-standard theory, validation breadth, fixed-budget audit, and v5 artifact validation.

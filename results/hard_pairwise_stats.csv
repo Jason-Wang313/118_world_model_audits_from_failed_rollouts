@@ -1,0 +1,12 @@
+baseline,mean_success_diff,ci95_success_diff,paired_success_wins,mean_utility_diff,ci95_utility_diff,paired_utility_wins,mean_mechanism_f1_diff,decisive
+observed_only_planner,0.562917,0.012390,10,1.509527,0.012397,10,0.596357,yes
+data_augmented_world_model,0.465000,0.011824,10,1.241939,0.011803,10,0.492520,yes
+scalar_uncertainty_planner,0.388125,0.009121,10,1.030087,0.009122,10,0.420565,yes
+ensemble_disagreement_planner,0.336562,0.014759,10,0.909963,0.014652,10,0.359888,yes
+conformal_risk_filter,0.318854,0.013922,10,0.826021,0.013960,10,0.344048,yes
+failure_classifier_repair,0.256875,0.010877,10,0.719091,0.010826,10,0.271063,yes
+active_probe_planner,0.198333,0.016054,10,0.577056,0.016142,10,0.185823,yes
+causal_query_repair,0.168958,0.013213,10,0.480709,0.013174,10,0.153340,yes
+pets_latent_mpc,0.209062,0.014748,10,0.580311,0.014747,10,0.214101,yes
+proposed_failed_rollout_audit_v4_1,0.099688,0.011154,10,0.263682,0.011110,10,0.088347,yes
+oracle_mechanism_repair,-0.123854,0.012365,0,-0.339086,0.012501,0,-0.121614,no

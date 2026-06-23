@@ -1,7 +1,9 @@
 # Novelty Decision
 
-Decision: STRONG_REVISE
+Decision: locally supported but not submission-ready.
 
-The v4.1 benchmark creates a defensible novelty boundary around mechanism-localized failed-rollout audits. The decisive point is not raw success alone; it is the combination of success gain, mechanism-F1 gain, invalid-repair reduction, repeat-failure reduction, damage reduction, lower probe cost, expanded stress coverage, failure-case documentation, and ablation support.
+Novelty boundary: the paper should claim a failed-rollout mechanism audit for repair/probe/abstention decisions. It should not claim a new generic world model, a new broad benchmark, a state-of-the-art robot policy, or sim-to-real robustness.
 
-The idea remains risky for ICLR main without external validation, but it is no longer an archive-only scaffold.
+The defensible v5 contribution is `counterfactual_mechanism_audit_v5`: a typed hidden-mechanism posterior, counterfactual replay term, diagnostic-probe value, repair-risk penalty, calibrated abstention gate, probe-budget controller, and repair-memory freshness guard.
+
+The local evidence supports STRONG_REVISE because v5 beats the previous method and strong baselines under hard, ablation, stress, and fixed-budget gates. The external novelty and deployment claim remains unproven without real robot or accepted high-fidelity validation.
